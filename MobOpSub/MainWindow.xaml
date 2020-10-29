@@ -1,0 +1,29 @@
+﻿<Window x:Class="MobOpSub.MainWindow"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MobOpSub"
+        mc:Ignorable="d"
+        Title="Абоненты сотового оператора" Height="450" Width="800">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="section" Text="Главная" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
+        <Grid Background="#0087E0" Panel.ZIndex="-2"/>
+        <Grid Background="#003A61" Grid.Row="2" Panel.ZIndex="-2"/>
+        <Frame Grid.Row="1" Name="MainFrame" NavigationUIVisibility="Hidden"/>
+        <materialDesign:PopupBox Foreground="White">
+            <Grid>
+                <StackPanel>
+                    <Button Content="Клиенты" x:Name="GoClient" Click="GoClient_Click"/>
+                    <Button Content="Договоры" x:Name="GoContract" Click="GoContract_Click"/>
+                </StackPanel>
+            </Grid>
+        </materialDesign:PopupBox>
+    </Grid>
+</Window>
