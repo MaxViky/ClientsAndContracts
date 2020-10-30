@@ -25,6 +25,7 @@
                 <DatePicker x:Name="dateContract" materialDesign:HintAssist.Hint="Дата составления" />
                 <TextBox materialDesign:HintAssist.Hint="Телефон" x:Name="phone"/>
                 <TextBox materialDesign:HintAssist.Hint="Тариф" x:Name="tariff"/>
+                <ComboBox materialDesign:HintAssist.Hint="Клиент" x:Name="client" Foreground="Black"/>
                 <DockPanel>
                     <Grid>
                         <Grid.ColumnDefinitions>

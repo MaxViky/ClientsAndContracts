@@ -21,7 +21,6 @@ namespace MobOpSub
     public partial class MainWindow : Window
     {
         ConnectionSQL connection = new ConnectionSQL();
-        ClientInfo ClientInfo;
         ClientsPage clientsPage = new ClientsPage();
         ContractPage contractPage = new ContractPage();
         public MainWindow()
@@ -44,13 +43,6 @@ namespace MobOpSub
             Manager.MainFrame = MainFrame;
             connection.UpdateGrid(Manager.contract_dataGrid, Manager.command_contract);
             section.Text = contractPage.Title;
-        }
-
-        private void goBack_Click(object sender, RoutedEventArgs e)
-        {
-            connection.UpdateGrid(Manager.client_dataGrid, Manager.command_client);
-            connection.UpdateGrid(Manager.contract_dataGrid, Manager.command_contract);
-            Manager.MainFrame.GoBack();
         }
     }
 }

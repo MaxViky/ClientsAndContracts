@@ -26,8 +26,8 @@ namespace MobOpSub
         ConnectionSQL connection = new ConnectionSQL();
         private int _id;
         private string _avatar;
-        string[] fields = new string[5] { "ФИО", "Дата рождения", "Адрес", "Аватар", "Номер договора" };
-        string[] data = new string[5];
+        string[] fields = new string[4] { "ФИО", "Дата рождения", "Адрес", "Аватар" };
+        string[] data = new string[4];
         public ClientInfo(int id)
         {
             InitializeComponent();
@@ -58,7 +58,6 @@ namespace MobOpSub
                     MessageBox.Show("Ошибка загрузки изображения");
                 }
             }
-            contract_n.Text = data[4];
         }
 
         private void SelectImage_Click(object sender, RoutedEventArgs e)
@@ -73,15 +72,10 @@ namespace MobOpSub
         private void Update_Click(object sender, RoutedEventArgs e)
         {
             string _date = date.SelectedDate.Value.ToString("yyyy/MM/dd");
-            if (contract_n.Text == null || contract_n.Text == "")
-            {
-                contract_n.Text = 0.ToString();
-            }
             string commandText = $"UPDATE clients SET [ФИО] = N'{client_name.Text}'" +
                 $", [Дата рождения] = '{_date}'" +
                 $", [Адрес] = N'{address.Text}'" +
                 $", [Аватар] = N'{picture.Text}'" +
-                $", [Номер договора] = {contract_n.Text}" +
                 $" WHERE Ид = {_id}";
             try
             {

@@ -28,9 +28,6 @@
                     <Button Click="SelectImage_Click" Height="30" Foreground="White" Content="..." Grid.Column="1"/>
                 </Grid>
             </DockPanel>
-            <TextBox x:Name="contract_n"
-                          materialDesign:HintAssist.Hint="Номер договора">
-            </TextBox>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -29,6 +30,9 @@ namespace MobOpSub
         {
             InitializeComponent();
             id = _id;
+            client.ItemsSource = connection.GetDataFromBase().AsDataView();
+            client.DisplayMemberPath = "Ид";
+            client.SelectedValuePath = "Ид";
             for (int i = 0; i < fields.Length; i++)
             {
                 string showContract_data = $"SELECT [{fields[i]}] FROM Contract WHERE [Номер договора] = {id}";
@@ -54,6 +58,7 @@ namespace MobOpSub
             string commandText = $"UPDATE Contract SET [Дата] = '{date}'" +
                 $", [Телефонный номер] = N'{phone.Text}'" +
                 $", [Тариф] = N'{tariff.Text}'" +
+                $", [Ид клиента] = {client.Text}" +
                 $" WHERE [Номер договора] = {id}";
             try
             {

@@ -44,5 +44,15 @@ namespace MobOpSub
             ShowSQL_Data(grid, command);
             CloseConnect();
         }
+
+        public DataTable GetDataFromBase()
+        {
+            string cm = "SELECT Ид, ФИО FROM clients";
+            DataTable dt = new DataTable();
+            SqlCommand cmd = new SqlCommand(cm, connection);
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+            dataAdapter.Fill(dt);
+            return dt;
+        }
     }
 }

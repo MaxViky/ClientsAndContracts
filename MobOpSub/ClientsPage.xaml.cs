@@ -44,19 +44,14 @@ namespace MobOpSub
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            if (contract_n.Text == null || contract_n.Text == "")
-            {
-                contract_n.Text = 0.ToString();
-            }
             try
             {
                 _name = client_name.Text;
                 _date = date.SelectedDate.Value.ToString("yyyy/MM/dd");
                 _address = address.Text;
-                n_contract = Convert.ToInt32(contract_n.Text);
                 _avatar = picture.Text;
                 string commandText = "INSERT INTO clients" +
-                    $" VALUES(N'{_name}', '{_date}', N'{_address}', N'{_avatar}', {n_contract})";
+                    $" VALUES(N'{_name}', '{_date}', N'{_address}', N'{_avatar}')";
                 connection.OpenConnect();
                 SqlCommand command = new SqlCommand(commandText, connection.GetConnect());
                 command.ExecuteNonQuery();
@@ -90,8 +85,9 @@ namespace MobOpSub
             catch (Exception)
             {
                 MessageBox.Show("Выберите правильного клиента");
+                throw;
             }
-            
+
         }
 
         private void Search_Click(object sender, RoutedEventArgs e)
@@ -104,17 +100,6 @@ namespace MobOpSub
             if (address.Text != null || address.Text != "")
             {
                 commandText += $" and Адрес LIKE N'%{address.Text}%'";
-            }
-            if (contract_n.Text != null || contract_n.Text != "")
-            {
-                try
-                {
-                    commandText += $" and [Номер договора] = {Convert.ToInt32(contract_n.Text)}";
-                }
-                catch (Exception)
-                {
-                }
-                
             }
             connection.UpdateGrid(Manager.client_dataGrid, commandText);
         }

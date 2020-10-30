@@ -27,6 +27,9 @@ namespace MobOpSub
         public ContractPage()
         {
             InitializeComponent();
+            client.ItemsSource = connection.GetDataFromBase().AsDataView();
+            client.DisplayMemberPath = "Ид";
+            client.SelectedValuePath = "Ид";
             Manager.contract_dataGrid = contract_data;
             Manager.command_contract = command;
             connection.ShowSQL_Data(contract_data, command);
@@ -35,21 +38,20 @@ namespace MobOpSub
         private void Add_Click(object sender, RoutedEventArgs e)
         {
             string date = dateContract.SelectedDate.Value.ToString("yyyy/MM/dd");
-            string commandText = $"INSERT INTO Contract(Дата, [Телефонный номер], [Тариф])" +
-                $" VALUES('{date}', N'{phone.Text}', N'{tariff.Text}')";
+            string commandText = $"INSERT INTO Contract" +
+                $" VALUES('{date}', N'{phone.Text}', N'{tariff.Text}', {client.Text})";
             try
             {
                 connection.OpenConnect();
                 SqlCommand command = new SqlCommand(commandText, connection.GetConnect());
                 command.ExecuteNonQuery();
                 connection.CloseConnect();
-                connection.UpdateGrid(Manager.contract_dataGrid, Manager.command_contract);
+                connection.UpdateGrid(contract_data, Manager.command_contract);
                 MessageBox.Show("Контракт добавлен");
             }
             catch (Exception)
             {
                 MessageBox.Show("Произошла ошибка");
-                throw;
             }
         }
 
@@ -64,7 +66,13 @@ namespace MobOpSub
             {
                 commandText += $" and Тариф LIKE N'%{tariff.Text}%'";
             }
-            connection.UpdateGrid(Manager.contract_dataGrid, commandText);
+            if (client.SelectedIndex != -1 || client.Text != "")
+            {
+                commandText += $" and [Ид клиента] = {client.Text}";
+            }
+                connection.UpdateGrid(Manager.contract_dataGrid, commandText);
+            
+            
         }
 
         private void contract_data_MouseDoubleClick(object sender, MouseButtonEventArgs e)

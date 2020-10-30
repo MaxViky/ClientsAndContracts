@@ -13,8 +13,7 @@
             <ColumnDefinition Width="7*"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="client_data" Grid.Row="0" Grid.Column="0" MouseDoubleClick="client_data_MouseDoubleClick" >
-        </DataGrid>
+        <DataGrid x:Name="client_data" Grid.Row="0" Grid.Column="0" MouseDoubleClick="client_data_MouseDoubleClick" />
         <Grid Grid.Row="0" Grid.Column="1" Background="White">
             <Grid.RowDefinitions>
                 <RowDefinition Height="5*"/>
@@ -38,8 +37,6 @@
                         <Button Click="SelectImage_Click" Height="30" Foreground="White" Content="..." Grid.Column="1"/>
                     </Grid>
                 </DockPanel>
-                <TextBox x:Name="contract_n"
-                          materialDesign:HintAssist.Hint="Номер договора"/>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>

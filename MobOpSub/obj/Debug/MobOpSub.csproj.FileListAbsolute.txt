@@ -3,7 +3,6 @@ E:\Projects\Тестовое задание\MobOpSub\bin\Debug\Database_log.ldf
 E:\Projects\Тестовое задание\MobOpSub\bin\Debug\MobOpSub.exe.config
 E:\Projects\Тестовое задание\MobOpSub\bin\Debug\MobOpSub.exe
 E:\Projects\Тестовое задание\MobOpSub\bin\Debug\MobOpSub.pdb
-E:\Projects\Тестовое задание\MobOpSub\obj\Debug\MobOpSub.csprojAssemblyReference.cache
 E:\Projects\Тестовое задание\MobOpSub\obj\Debug\MainWindow.g.cs
 E:\Projects\Тестовое задание\MobOpSub\obj\Debug\App.g.cs
 E:\Projects\Тестовое задание\MobOpSub\obj\Debug\MobOpSub_Content.g.cs
@@ -31,3 +30,4 @@ E:\Projects\Тестовое задание\MobOpSub\obj\Debug\ClientInfo.g.cs
 E:\Projects\Тестовое задание\MobOpSub\obj\Debug\ClientInfo.baml
 E:\Projects\Тестовое задание\MobOpSub\obj\Debug\contractInfo.g.cs
 E:\Projects\Тестовое задание\MobOpSub\obj\Debug\contractInfo.baml
+E:\Projects\Тестовое задание\MobOpSub\obj\Debug\MobOpSub.csprojAssemblyReference.cache
