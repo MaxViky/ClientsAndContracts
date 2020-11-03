@@ -26,7 +26,8 @@ namespace MobOpSub
     {
         DataTable dt = new DataTable();
         ConnectionSQL connection = new ConnectionSQL();
-        string showData = "SELECT * FROM clients";
+        string showData = "SELECT Ид, ФИО, [Дата рождения], Адрес, [Номер договора], [Тариф]" +
+            " FROM clients LEFT JOIN Contract on clients.Ид = Contract.[Ид клиента]";
         private string _name;
         private string _date;
         private string _address;

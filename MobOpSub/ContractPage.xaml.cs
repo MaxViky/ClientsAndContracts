@@ -22,13 +22,15 @@ namespace MobOpSub
     /// </summary>
     public partial class ContractPage : Page
     {
-        string command = "SELECT * FROM Contract";
+        string command = "SELECT Contract.*, ФИО" +
+            " FROM Contract LEFT JOIN clients" +
+            " on Contract.[Ид клиента] = clients.[Ид]";
         ConnectionSQL connection = new ConnectionSQL();
         public ContractPage()
         {
             InitializeComponent();
             client.ItemsSource = connection.GetDataFromBase().AsDataView();
-            client.DisplayMemberPath = "Ид";
+            client.DisplayMemberPath = "ФИО";
             client.SelectedValuePath = "Ид";
             Manager.contract_dataGrid = contract_data;
             Manager.command_contract = command;
@@ -39,7 +41,7 @@ namespace MobOpSub
         {
             string date = dateContract.SelectedDate.Value.ToString("yyyy/MM/dd");
             string commandText = $"INSERT INTO Contract" +
-                $" VALUES('{date}', N'{phone.Text}', N'{tariff.Text}', {client.Text})";
+                $" VALUES('{date}', N'{phone.Text}', N'{tariff.Text}', {client.SelectedValue})";
             try
             {
                 connection.OpenConnect();

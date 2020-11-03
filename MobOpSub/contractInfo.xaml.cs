@@ -31,7 +31,7 @@ namespace MobOpSub
             InitializeComponent();
             id = _id;
             client.ItemsSource = connection.GetDataFromBase().AsDataView();
-            client.DisplayMemberPath = "Ид";
+            client.DisplayMemberPath = "ФИО";
             client.SelectedValuePath = "Ид";
             for (int i = 0; i < fields.Length; i++)
             {
@@ -58,7 +58,7 @@ namespace MobOpSub
             string commandText = $"UPDATE Contract SET [Дата] = '{date}'" +
                 $", [Телефонный номер] = N'{phone.Text}'" +
                 $", [Тариф] = N'{tariff.Text}'" +
-                $", [Ид клиента] = {client.Text}" +
+                $", [Ид клиента] = {client.SelectedValue}" +
                 $" WHERE [Номер договора] = {id}";
             try
             {
